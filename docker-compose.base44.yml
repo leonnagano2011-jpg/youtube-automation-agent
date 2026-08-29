@@ -1,0 +1,17 @@
+services:
+  app:
+    image: node:20-bookworm
+    working_dir: /app
+    command: sh -c "npm install --no-audit --no-fund && npx nodemon --watch . --ext js,html,css --ignore data --ignore uploads --ignore logs index.js"
+    environment:
+      - PORT=3456
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+      - BASE44_PUBLIC_HOST_SUFFIX=${BASE44_PUBLIC_HOST_SUFFIX}
+    env_file:
+      - ./.env.base44-defaults
+      - /run/base44/app.env
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3456"

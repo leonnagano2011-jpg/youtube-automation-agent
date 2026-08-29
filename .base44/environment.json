@@ -1,0 +1,9 @@
+{
+  "previewPort": 3000,
+  "healthPath": "/health",
+  "startCommand": "docker compose -f docker-compose.base44.yml up -d",
+  "secrets": [
+    { "name": "OPENAI_API_KEY", "description": "OpenAI API key (or use GEMINI_API_KEY instead)", "requiredAtBoot": false },
+    { "name": "GEMINI_API_KEY", "description": "Google Gemini API key", "requiredAtBoot": false }
+  ]
+}
